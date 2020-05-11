@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -11,32 +12,29 @@ namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
+        private ApplicationDbContext _context;
 
-        public List<Customer> customers = new List<Customer>
-            {
-                new Customer{ id= 1 , Name="Sebastian Reza"},
-                new Customer{ id= 2 , Name="Sarah Ramires"}
-            };
-
+        public CustomersController()
+        {
+            _context = new ApplicationDbContext();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         //[Route("Customers/Index")]
         public ActionResult Index()
         {
-            
 
-            var viewModel = new RandomMovieViewModel {
-                Customers = customers,
-                Movie = null
-            
-            };
-            
-            return View(viewModel);
+            var customers = _context.Customers.Include(c => c.MemberShipType).ToList();         
+            return View(customers);
         }
 
         [Route("Customers/Details/{id}")]
-        public ActionResult Details(int id,string name) 
+        public ActionResult Details(int id) 
         {
-            var customer = customers.FindLast(c => c.id == id);
+            var customer = _context.Customers.Include(c => c.MemberShipType).SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
             {
