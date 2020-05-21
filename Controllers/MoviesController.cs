@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
+using Microsoft.Ajax.Utilities;
 
 namespace Vidly.Controllers
 {
@@ -22,6 +23,54 @@ namespace Vidly.Controllers
         {
             _context.Dispose();
         }
+
+        public ActionResult New() 
+        {
+            var genres = _context.Genres.ToList();
+            var viewModel = new MovieFormViewModel{ 
+                Genres = genres                
+            };
+
+            return View("MovieForm",viewModel);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+            if (movie == null)
+                return HttpNotFound();
+
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                Genres = _context.Genres.ToList()
+            };
+
+            return View("MovieForm",viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Movie movie) 
+        {
+            if (movie.Id == 0)
+            {
+                movie.DateAdded = DateTime.Now;
+                _context.Movies.Add(movie);
+            }            
+            else
+            {
+                var movieInDB = _context.Movies.Single(m => m.Id == movie.Id);
+                movieInDB.Name = movie.Name;
+                movieInDB.ReleaseDate = movie.ReleaseDate;
+                movieInDB.GenreId = movie.GenreId;
+                movieInDB.Stock = movie.Stock;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("List","Movies");
+        }
+
         // GET: Movies
         public ActionResult Random()
         {
@@ -46,9 +95,9 @@ namespace Vidly.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Edit(int id) {
-            return Content("id= " + id);
-        }
+        //public ActionResult Edit(int id) {
+        //    return Content("id= " + id);
+        //}
 
         [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, int month)
