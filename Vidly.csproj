@@ -217,6 +217,14 @@
     <Compile Include="Migrations\202005110340332_populateGenre.designer.cs">
       <DependentUpon>202005110340332_populateGenre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005210651447_ApplyAnnotationsToMemberShipType.cs" />
+    <Compile Include="Migrations\202005210651447_ApplyAnnotationsToMemberShipType.designer.cs">
+      <DependentUpon>202005210651447_ApplyAnnotationsToMemberShipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005251657463_ApplyAnnotationsToMovie.cs" />
+    <Compile Include="Migrations\202005251657463_ApplyAnnotationsToMovie.designer.cs">
+      <DependentUpon>202005251657463_ApplyAnnotationsToMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -224,6 +232,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MemberShipType.cs" />
+    <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -346,6 +355,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005110340332_populateGenre.resx">
       <DependentUpon>202005110340332_populateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005210651447_ApplyAnnotationsToMemberShipType.resx">
+      <DependentUpon>202005210651447_ApplyAnnotationsToMemberShipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005251657463_ApplyAnnotationsToMovie.resx">
+      <DependentUpon>202005251657463_ApplyAnnotationsToMovie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
