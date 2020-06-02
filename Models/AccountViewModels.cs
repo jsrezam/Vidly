@@ -3,12 +3,21 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Vidly.Models
 {
-    public class ExternalLoginConfirmationViewModel
-    {
-        [Required]
-        [Display(Name = "Correo electrónico")]
-        public string Email { get; set; }
-    }
+    //public class ExternalLoginConfirmationViewModel
+    //{
+    //    [Required]
+    //    [Display(Name = "Correo electrónico")]
+    //    public string Email { get; set; }
+
+    //    [Required]
+    //    [Display(Name = "Driving License")]
+    //    public string DrivingLicense { get; set; }
+
+    //    [Required]
+    //    [Display(Name = "Phone")]
+    //    [StringLength(50)]
+    //    public string Phone { get; set; }
+    //}
 
     public class ExternalLoginListViewModel
     {
@@ -62,24 +71,33 @@ namespace Vidly.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
-    {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Correo electrónico")]
-        public string Email { get; set; }
+    //public class RegisterViewModel
+    //{
+    //    [Required]
+    //    [Display(Name = "Phone")]
+    //    [StringLength(50)]
+    //    public string Phone { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Contraseña")]
-        public string Password { get; set; }
+    //    [Required]
+    //    [Display(Name ="Driving License")]
+    //    public string DrivingLicense { get; set; }
 
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirmar contraseña")]
-        [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
-        public string ConfirmPassword { get; set; }
-    }
+    //    [Required]
+    //    [EmailAddress]
+    //    [Display(Name = "Correo electrónico")]
+    //    public string Email { get; set; }
+
+    //    [Required]
+    //    [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
+    //    [DataType(DataType.Password)]
+    //    [Display(Name = "Contraseña")]
+    //    public string Password { get; set; }
+
+    //    [DataType(DataType.Password)]
+    //    [Display(Name = "Confirmar contraseña")]
+    //    [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
+    //    public string ConfirmPassword { get; set; }
+    //}
 
     public class ResetPasswordViewModel
     {
